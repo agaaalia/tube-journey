@@ -1229,7 +1229,7 @@ I am so happy we met.</p>
 And you continue to surprise me with your vocabulary, your knowledge of the world, your love for fruits, your GenZness, and your capacity to care for me in ways that no one has before.</p>  
 <p>Thank you for being such a sweet boyfriend (hehe boyfriend!!), and for being there for me. I truly appreciate you so much and I want you to know that! And I hope that I can do the same for you.</p>  
 <p>Again, happy birthday!!! We’ll go for more venchi chocolate when you’re back x</p>
-          <p>Happy Birthday <span class="heart">❤️</span></p>`,
+          <p>Text me when you see this heh<span class="heart">❤️</span></p>`,
     onContinue: next
   });
 }
