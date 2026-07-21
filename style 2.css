@@ -1,0 +1,275 @@
+/* ====================================================================
+   THE LONG WAY ROUND — styles
+   Palette (transit + travel-poster + golden-hour Paris):
+     --ink    #14121a   near-black navy (upholstery, night)
+     --paper  #f3ead2   warm letter cream
+     --paper2 #e7d9b0   paper shadow
+     --amber  #ffc24b   Underground signage glow
+     --gold   #ffd76a   golden hour / sparkle
+     --coral  #e8746b   character accent A
+     --teal   #3f7fb0   character accent B
+     --night  #0d1030   Paris night sky
+==================================================================== */
+
+:root{
+  --ink:#14121a;
+  --paper:#f3ead2;
+  --paper2:#e7d9b0;
+  --amber:#ffc24b;
+  --gold:#ffd76a;
+  --coral:#e8746b;
+  --teal:#3f7fb0;
+  --night:#0d1030;
+  --pixel: 'Press Start 2P', 'Courier New', monospace;
+  --read:  'VT323', 'Courier New', monospace;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html,body{
+  height:100%;
+  background:#000;
+  overflow:hidden;
+  color:var(--paper);
+  font-family:var(--pixel);
+  /* Keep everything blocky — no sub-pixel softening on the artwork. */
+  -webkit-font-smoothing:none;
+  text-rendering:optimizeSpeed;
+}
+
+/* ---- Stage & canvas ------------------------------------------------ */
+#stage{
+  position:fixed; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:
+    radial-gradient(120% 120% at 50% 30%, #1b1830 0%, #000 80%);
+}
+
+#game{
+  /* Sized by JS to an integer multiple of 320x180, letterboxed. */
+  image-rendering:pixelated;
+  image-rendering:crisp-edges;
+  display:block;
+  box-shadow:0 0 40px rgba(0,0,0,.7);
+}
+
+/* ---- UI overlay ---------------------------------------------------- */
+#ui{
+  position:absolute; inset:0;
+  pointer-events:none;               /* children opt back in */
+  display:flex; align-items:center; justify-content:center;
+}
+#ui > *{ pointer-events:auto; }
+
+.hidden{ display:none !important; }
+
+/* ---- Title screen -------------------------------------------------- */
+.screen{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.55);
+}
+.title-wrap{ text-align:center; padding:24px; }
+
+.eyebrow{
+  font-family:var(--read);
+  font-size:clamp(16px,2.4vw,24px);
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:var(--amber);
+  opacity:.85;
+  margin-bottom:14px;
+}
+.game-title{
+  font-family:var(--pixel);
+  font-size:clamp(26px,6.4vw,64px);
+  line-height:1.25;
+  color:var(--paper);
+  text-shadow:
+     3px 3px 0 #000,
+     6px 6px 0 rgba(255,194,75,.25);
+  margin-bottom:34px;
+}
+
+.press-start{
+  font-family:var(--pixel);
+  font-size:clamp(12px,2vw,18px);
+  color:var(--amber);
+  background:none; border:none; cursor:pointer;
+  letter-spacing:.15em;
+  animation:blink 1.1s steps(1) infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* ---- Chunky pixel buttons ----------------------------------------- */
+.btn{
+  font-family:var(--pixel);
+  font-size:clamp(11px,1.7vw,16px);
+  color:var(--ink);
+  background:var(--amber);
+  border:none;
+  padding:16px 26px;
+  cursor:pointer;
+  letter-spacing:.06em;
+  /* stepped pixel border built from stacked shadows */
+  box-shadow:
+     0 0 0 4px var(--ink),
+     0 0 0 8px var(--amber),
+     6px 6px 0 8px rgba(0,0,0,.45);
+  transition:transform .08s steps(2), background .12s;
+}
+.btn:hover{ background:var(--gold); transform:translate(-2px,-2px); }
+.btn:active{ transform:translate(2px,2px); }
+.btn:focus-visible{ outline:3px dashed var(--paper); outline-offset:6px; }
+
+/* ---- Announcement (split-flap / dot-matrix vibe) ------------------- */
+.announce{
+  position:absolute;
+  top:6%;
+  display:flex; align-items:center; gap:14px;
+  background:var(--ink);
+  color:var(--amber);
+  font-family:var(--pixel);
+  font-size:clamp(9px,1.5vw,14px);
+  letter-spacing:.12em;
+  padding:12px 18px;
+  border:3px solid var(--amber);
+  box-shadow:0 4px 0 rgba(0,0,0,.5), inset 0 0 14px rgba(255,194,75,.25);
+  text-shadow:0 0 8px rgba(255,194,75,.7);
+  animation:announceIn .5s ease-out;
+}
+@keyframes announceIn{ from{ transform:translateY(-14px); opacity:0; } }
+.dot-dash{
+  width:18px; height:8px;
+  background:repeating-linear-gradient(90deg,var(--amber) 0 3px,transparent 3px 6px);
+}
+
+/* ---- Tap hint ------------------------------------------------------ */
+.hint{
+  position:absolute;
+  bottom:12%;
+  font-family:var(--read);
+  font-size:clamp(16px,2.4vw,26px);
+  color:var(--paper);
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  opacity:.9;
+  animation:floaty 1.6s ease-in-out infinite;
+  text-shadow:2px 2px 0 #000;
+}
+@keyframes floaty{ 50%{ transform:translateY(-6px); } }
+
+/* ---- Letters ------------------------------------------------------- */
+.letter{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(6,4,14,.55);
+  padding:20px;
+  animation:fadeIn .35s ease-out;
+}
+@keyframes fadeIn{ from{ opacity:0; } }
+
+.paper{
+  position:relative;
+  width:min(560px,92vw);
+  max-height:88vh; overflow:auto;
+  background:
+    linear-gradient(var(--paper),var(--paper));
+  color:#3a2f1c;
+  padding:40px 34px 30px;
+  text-align:center;
+  transform:rotate(-1deg);
+  /* layered pixel frame */
+  box-shadow:
+     0 0 0 4px #3a2f1c,
+     0 0 0 10px var(--paper),
+     0 0 0 14px #3a2f1c,
+     14px 16px 0 14px rgba(0,0,0,.45);
+}
+.paper-seal{
+  position:absolute; top:-18px; left:50%;
+  transform:translateX(-50%);
+  width:40px; height:40px; line-height:40px;
+  background:var(--coral); color:#fff;
+  border:3px solid #3a2f1c;
+  border-radius:50%;
+  font-family:var(--pixel); font-size:14px;
+}
+.letter-title{
+  font-family:var(--pixel);
+  font-size:clamp(16px,3vw,24px);
+  color:#7a2f26;
+  margin-bottom:18px;
+  letter-spacing:.05em;
+}
+.letter-body{
+  font-family:var(--read);
+  font-size:clamp(19px,2.6vw,26px);
+  line-height:1.45;
+  color:#4a3c26;
+  text-align:left;
+  white-space:normal;
+}
+.letter-body p{ margin-bottom:12px; }
+.continue{ margin-top:26px; }
+
+/* Finale birthday letter — warmer, bigger, celebratory */
+.letter.finale .paper{
+  background:linear-gradient(160deg,#fff7e6,#f6e4c4);
+  transform:rotate(0deg);
+  box-shadow:
+     0 0 0 4px #b8860b,
+     0 0 0 10px #fff7e6,
+     0 0 0 14px #b8860b,
+     0 0 22px 14px rgba(255,215,106,.45),
+     14px 16px 0 14px rgba(0,0,0,.4);
+}
+.letter.finale .letter-title{
+  color:#b8860b;
+  font-size:clamp(18px,3.6vw,30px);
+}
+.letter.finale .paper-seal{ background:var(--gold); color:#7a2f26; }
+.letter.finale .letter-body{ font-size:clamp(20px,3vw,30px); text-align:center; }
+.letter.finale .heart{ color:var(--coral); }
+
+/* ---- Corner chips -------------------------------------------------- */
+.chip{
+  position:absolute;
+  font-family:var(--pixel);
+  font-size:clamp(8px,1.2vw,11px);
+  color:var(--paper);
+  background:rgba(20,18,26,.8);
+  border:2px solid var(--amber);
+  padding:8px 10px;
+  cursor:pointer;
+  letter-spacing:.08em;
+}
+.chip:hover{ background:var(--amber); color:var(--ink); }
+.chip:focus-visible{ outline:2px dashed var(--paper); outline-offset:3px; }
+#sound{ top:14px; right:14px; }
+.replay{ bottom:14px; right:14px; border-color:var(--gold); }
+
+/* ---- CRT scanline sheen ------------------------------------------- */
+.scanlines{
+  position:absolute; inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+     to bottom,
+     rgba(0,0,0,0) 0 2px,
+     rgba(0,0,0,.10) 2px 4px);
+  mix-blend-mode:multiply;
+  opacity:.6;
+}
+
+/* ---- Motion sensitivity ------------------------------------------- */
+@media (prefers-reduced-motion: reduce){
+  .press-start{ animation:none; }
+  .hint{ animation:none; }
+  .announce{ animation:none; }
+  .scanlines{ opacity:.25; }
+}
+
+/* ---- Small screens ------------------------------------------------- */
+@media (max-width:520px){
+  .paper{ padding:32px 22px 24px; }
+}
