@@ -1,5 +1,5 @@
 /* ====================================================================
-   THE LONG WAY ROUND
+   OUR JOURNEY
    A tiny playable pixel journey. Vanilla JS, one <canvas>, no libraries.
 
    How it's built:
@@ -1202,13 +1202,14 @@ function heartPop(cx, chance=1){
 function openLetterAct(n, next){
   const acts = {
     1:{ title:"Act I",
-        body:`<p>Placeholder — Act I.</p>
-              <p>Write the first part of your story here. Where you began, a small memory, an inside joke.</p>
-              <p>Keep it light; the journey is only starting.</p>` },
+        body:`<p>Our Very First Date</p>
+              <p>It was a decently sunny February weekend in Stratford - and my first weekend in London too. I got lost in the massive station, and I found you standing by a hotdog stand.I remember thinking you looked very kind in your grey coat. We spent 5 hours together clocking 12,000 steps as we walked around Hackney Wick, Queen Elizabeth Olympic Park (where you questioned my cute camera), and then Whitechapel. And we ended at Costa Coffee, where you bought me a flat white - which I now realise you rarely do.
+ </p>
+              <p>I quote myself from my diary “I think this is good”.</p>` },
     2:{ title:"Act II",
-        body:`<p>Placeholder — Act II.</p>
-              <p>The middle of the tale. A moment you shared, somewhere you went, something you learned about each other.</p>
-              <p>The train is about to go further than usual…</p>` }
+        body:`<p>Summer Comes!</p>
+              <p>I feel like Hampton Court Palace was a special date for us. It felt almost like a day trip and I think that was also the first time I stayed over 2 nights in a row. We took many cute pictures that day, and sat by the topiaries and gardens basking in nice weather.</p>
+              <p>Oh and that was indeed the day where regular feeding times became a thing lol. Thank you for always managing my hanger and being so patient with me x</p>` }
   };
   openLetter({ ...acts[n], onContinue: next });
 }
@@ -1217,8 +1218,17 @@ function openBirthdayLetter(next){
     finale:true,
     title:"For You",
     button:"Close",
-    body:`<p>Placeholder — the big one.</p>
-          <p>This is where the real letter goes. Everything you didn't fit into a caption. All of it.</p>
+    body:`<p>My dearest David, Happy Birthday!</p>
+          <p>I hope you’ve been enjoying this website so far :) I also know you aren’t too fond of reading too many words, so I will try to keep this short and sweet.
+
+Firstly, you are a great human being and I hope you’re currently surrounded by people who love you and that your birthday ushers in a year of joy, love, and all the best things in the world like chocolate, roasted peking duck, crispy chips, lots of money and you getting to manage people & go home at 3pm. 
+
+I am so happy we met. 
+
+You are a man of many layers, and I’ve enjoyed discovering and learning about your different sides. You are stoic (yes), yet deeply connected to your emotions. Measured, yet passionate. Highly independent, but still so caring and generous with the people you care about. 
+And you continue to surprise me with your vocabulary, your knowledge of the world, your love for fruits, your GenZness, and your capacity to care for me in ways that no one has before. 
+Thank you for being such a sweet boyfriend (hehe boyfriend!!), and for being there for me. I truly appreciate you so much and I want you to know that! And I hope that I can do the same for you. 
+Again, happy birthday!!! We’ll go for more venchi chocolate when you’re back x</p>
           <p>Happy Birthday <span class="heart">❤️</span></p>`,
     onContinue: next
   });
