@@ -1219,16 +1219,16 @@ function openBirthdayLetter(next){
     title:"For You",
     button:"Close",
     body:`<p>My dearest David, Happy Birthday!</p>
-          <p>I hope you’ve been enjoying this website so far :) I also know you aren’t too fond of reading too many words, so I will try to keep this short and sweet.
+          <p>I hope you’ve been enjoying this website so far :) I also know you aren’t too fond of reading too many words, so I will try to keep this short and sweet.</p>
 
-Firstly, you are a great human being and I hope you’re currently surrounded by people who love you and that your birthday ushers in a year of joy, love, and all the best things in the world like chocolate, roasted peking duck, crispy chips, lots of money and you getting to manage people & go home at 3pm. 
+<p>Firstly, you are a great human being and I hope you’re currently surrounded by people who love you and that your birthday ushers in a year of joy, love, and all the best things in the world like chocolate, roasted peking duck, crispy chips, lots of money and you getting to manage people & go home at 3pm. 
 
-I am so happy we met. 
+I am so happy we met.</p> 
 
-You are a man of many layers, and I’ve enjoyed discovering and learning about your different sides. You are stoic (yes), yet deeply connected to your emotions. Measured, yet passionate. Highly independent, but still so caring and generous with the people you care about. 
-And you continue to surprise me with your vocabulary, your knowledge of the world, your love for fruits, your GenZness, and your capacity to care for me in ways that no one has before. 
-Thank you for being such a sweet boyfriend (hehe boyfriend!!), and for being there for me. I truly appreciate you so much and I want you to know that! And I hope that I can do the same for you. 
-Again, happy birthday!!! We’ll go for more venchi chocolate when you’re back x</p>
+<p>You are a man of many layers, and I’ve enjoyed discovering and learning about your different sides. You are stoic (yes), yet deeply connected to your emotions. Measured, yet passionate. Highly independent, but still so caring and generous with the people you care about. 
+And you continue to surprise me with your vocabulary, your knowledge of the world, your love for fruits, your GenZness, and your capacity to care for me in ways that no one has before.</p>  
+<p>Thank you for being such a sweet boyfriend (hehe boyfriend!!), and for being there for me. I truly appreciate you so much and I want you to know that! And I hope that I can do the same for you.</p>  
+<p>Again, happy birthday!!! We’ll go for more venchi chocolate when you’re back x</p>
           <p>Happy Birthday <span class="heart">❤️</span></p>`,
     onContinue: next
   });
@@ -1237,7 +1237,7 @@ Again, happy birthday!!! We’ll go for more venchi chocolate when you’re back
 /* end-of-journey card + replay */
 function showEnd(){
   D.replay.classList.remove("hidden");
-  showAnnounce("The Long Way Round — happy birthday ❤", 0);
+  showAnnounce("missing you loads,happy birthday ❤", 0);
 }
 D.replay.addEventListener("click", ()=>{
   D.replay.classList.add("hidden");
